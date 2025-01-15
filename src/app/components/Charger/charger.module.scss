@@ -1,0 +1,28 @@
+.charger {
+  border-radius: 2px;
+  border: 2px solid #567bac;
+  background-color: #e0e0e0;
+  min-height: 500px;
+  min-width: 420px;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+
+  h2 {
+    text-align: center;
+    color: #1e1e1e;
+  }
+
+  .block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .waiting-queue {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+}
