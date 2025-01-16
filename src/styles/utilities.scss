@@ -1,0 +1,216 @@
+@use 'src/styles/colors.module';
+@use 'src/styles/mixins';
+
+@for $index from 1 through 100 {
+  .u-m--#{$index} {
+    margin: $index + px;
+  }
+  .u-mt--#{$index} {
+    margin-top: $index + px;
+  }
+  .u-mr--#{$index} {
+    margin-right: $index + px;
+  }
+  .u-ml--#{$index} {
+    margin-left: $index + px;
+  }
+  .u-mb--#{$index} {
+    margin-bottom: $index + px;
+  }
+  .u-p--#{$index} {
+    padding: $index + px;
+  }
+  .u-pl--#{$index} {
+    padding-left: $index + px;
+  }
+  .u-pr--#{$index} {
+    padding-right: $index + px;
+  }
+  .u-pt--#{$index} {
+    padding-top: $index + px;
+  }
+  .u-pb--#{$index} {
+    padding-bottom: $index + px;
+  }
+  .u-size--#{$index} {
+    font-size: $index + px;
+  }
+  .u-gap--#{$index} {
+    gap: $index + px;
+  }
+  .u-gap-col--#{$index} {
+    gap: 0 $index + px;
+  }
+}
+
+@for $index from 1 through 9 {
+  .u-weight--#{$index} {
+    font-weight: #{$index}00;
+  }
+}
+
+.u-flex {
+  display: flex;
+  &--05 {
+    flex: 0.5;
+  }
+  &--1 {
+    flex: 1;
+  }
+}
+
+.u-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.u-wrap {
+  flex-wrap: wrap;
+}
+.u-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+.u-start {
+  justify-content: flex-start;
+}
+.u-between {
+  justify-content: space-between;
+}
+.u-end {
+  justify-content: flex-end;
+}
+.u-center {
+  justify-content: center;
+}
+.u-align {
+  &--start {
+    align-items: start;
+  }
+  &--center {
+    align-items: center;
+  }
+  &--end {
+    align-items: flex-end;
+  }
+}
+.u-text-align {
+  &--center {
+    text-align: center;
+  }
+}
+
+.u-pointer {
+  cursor: pointer;
+}
+
+.u-text {
+  &--normal {
+    text-transform: unset;
+  }
+  &--underline {
+    text-decoration: underline;
+  }
+  &--line-through {
+    text-decoration: line-through;
+  }
+}
+
+.u-error {
+  &--1 {
+    color: colors.$red-1;
+    font-size: 13px;
+  }
+}
+
+.u-hint {
+  font-weight: 400;
+  font-size: 11px;
+
+  &--m {
+    @extend .u-hint;
+    font-size: 14px;
+  }
+}
+
+.u-divider {
+  width: 100%;
+  border-bottom: 1px solid #000000;
+  margin: 7px 0;
+}
+
+.u-bold {
+  &--medium {
+    font-weight: 700;
+  }
+}
+
+.u-for-desktop {
+  @include mixins.mobile {
+    display: none;
+  }
+}
+
+.u-row--2 {
+  @include mixins.row(2);
+}
+.u-row--3 {
+  @include mixins.row(3);
+}
+.u-row--4 {
+  @include mixins.row(4);
+}
+
+// FOR Reach Text Editor
+
+.ql-align-center {
+  text-align: center;
+}
+.ql-size {
+  &-small {
+    font-size: 12px;
+  }
+  &-large {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  &-huge {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+}
+
+.u-white-space {
+  &--pre-wrap {
+    white-space: pre-wrap;
+  }
+  &--nowrap {
+    white-space: nowrap;
+  }
+  &--break {
+    white-space: break-spaces;
+  }
+}
+
+.u-color {
+  &--red {
+    color: colors.$red-4;
+  }
+  &--blue {
+    color: colors.$blue-1;
+  }
+}
+
+.u-square {
+  padding: 4px 6px;
+  background-color: rgb(226, 226, 226);
+  color: #000;
+  font-size: 14px;
+}
+
+.u-hide {
+  position: absolute;
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+}

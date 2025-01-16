@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { useQuery, useQueryClient, UseQueryResult } from '@tanstack/react-query';
+import { Card, List } from 'antd';
 import { produce } from 'immer';
 import { ChargerProps, CreatedVehicleProps, VehicleListProps } from 'src/app/App';
 import { vehiclesMap } from 'src/app/app.data';
@@ -55,20 +56,27 @@ const Charger: React.FC<{ charger: ChargerProps }> = ({ charger }) => {
   }, [QUERY, charger.name, queryClient]);
 
   return (
-    <div className={styles.charger} key={charger.name}>
-      <h2>{charger.name}</h2>
+    <Card
+      key={charger.name}
+      title={charger.name}
+      className={styles.card}
+      styles={{
+        body: { padding: 10, flex: 1, display: 'flex', flexDirection: 'column' },
+      }}
+      bordered={false}
+    >
       <div className={styles.block}>
-        <div className={styles['waiting-queue']}>
+        <ul className={styles['waiting-queue']}>
           {data?.map(({ plate, registerTime, id }) => {
             const vehicle = vehiclesMap[plate];
 
             return <QueueItem key={id} id={id} vehicle={vehicle} registerTime={registerTime} />;
           })}
-        </div>
+        </ul>
 
         <VehicleForm chargerName={charger.name} />
       </div>
-    </div>
+    </Card>
   );
 };
 

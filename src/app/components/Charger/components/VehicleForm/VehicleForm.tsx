@@ -25,7 +25,7 @@ const VehicleForm: React.FC<VehicleFormProps> = ({ chargerName }) => {
 
   return (
     <Form form={formRef} onFinish={handleSubmit} className={styles.form}>
-      <Form.Item name="vehicle" required>
+      <Form.Item name="vehicle" required className={styles.select}>
         <Select
           placeholder="Select plate number"
           options={vehicles}

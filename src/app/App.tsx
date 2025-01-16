@@ -1,4 +1,5 @@
 import styles from './app.module.scss';
+import logo from 'src/assets/logo.svg';
 
 import Charger from './components/Charger/Charger';
 
@@ -18,12 +19,17 @@ const chargers: ChargerProps[] = [
 const App = () => {
   return (
     <div className={styles.container}>
-      <h1>Charger Waiting List</h1>
-      <div className={styles.chargers}>
-        {chargers.map((charger) => {
-          return <Charger key={charger.name} charger={charger} />;
-        })}
-      </div>
+      <header className={styles.header}>
+        <img src={logo} width={40} />
+      </header>
+
+      <main className={styles.main}>
+        <div className={styles.chargers}>
+          {chargers.map((charger) => {
+            return <Charger key={charger.name} charger={charger} />;
+          })}
+        </div>
+      </main>
     </div>
   );
 };

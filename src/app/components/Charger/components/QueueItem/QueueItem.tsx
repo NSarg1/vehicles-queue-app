@@ -1,5 +1,5 @@
-import { DeleteOutlined } from '@ant-design/icons';
-import { Button, Space, Spin } from 'antd';
+import { DeleteFilled, DeleteOutlined } from '@ant-design/icons';
+import { Button, List, Space, Spin } from 'antd';
 import dayjs from 'dayjs';
 import { VehicleProps } from 'src/app/app.data';
 import useAsyncFn from 'src/hooks/useAsyncFn.hook';
@@ -22,17 +22,17 @@ const QueueItem: React.FC<QueueItemProps> = ({ vehicle, id, registerTime }) => {
     }
   });
   return (
-    <div className={styles.vehicle}>
+    <li className={styles.item}>
       <span>
         {vehicle?.name} / {vehicle?.plate}
       </span>
       <Space>
         <span>{dayjs(registerTime).format('HH:mm')}</span>
-        <Button type="text" danger onClick={removeVehicle}>
-          {!isLoading ? <DeleteOutlined /> : <Spin size="small" />}
+        <Button type="text" danger onClick={removeVehicle} size="small" className={styles.btn}>
+          {!isLoading ? <DeleteFilled className={styles.icon} /> : <Spin size="small" />}
         </Button>
       </Space>
-    </div>
+    </li>
   );
 };
 

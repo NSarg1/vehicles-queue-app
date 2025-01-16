@@ -1,8 +1,21 @@
-.vehicle {
+.item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 10px;
-  background-color: #314657;
-  border-radius: 10px;
+  border-radius: 4px;
+  padding: 4px 10px;
+  padding-right: 4px;
+  background-color: #a6cdc6;
+
+  .btn {
+    .icon {
+      color: rgb(255, 135, 135);
+    }
+
+    &:hover {
+      .icon {
+        color: rgb(255, 28, 28);
+      }
+    }
+  }
 }

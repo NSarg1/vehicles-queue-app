@@ -1,0 +1,99 @@
+@use 'sass:map';
+@use './variables.module';
+@use './colors.module';
+
+@mixin media($breakpoint) {
+  @media only screen and (max-width: ($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: map.get(variables.$media, 'mobile')) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (max-width: map.get(variables.$media, 'tablet')) {
+    @content;
+  }
+}
+@mixin tabletPortrait {
+  @media only screen and (max-width: map.get(variables.$media, 'desktop')) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media only screen and (max-width: map.get(variables.$media, 'desktopLg')) {
+    @content;
+  }
+}
+@mixin desktop-only {
+  @media only screen and (min-width: map.get(variables.$media, 'mobile')) {
+    @content;
+  }
+}
+
+@mixin customScrollbar($color) {
+  @media only screen and (min-width: map.get(variables.$media, 'mobile')) {
+    scrollbar-color: $color transparent;
+    scrollbar-width: thin;
+    /* width */
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #dddddd;
+    }
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: $color;
+    }
+  }
+}
+
+@mixin row($count) {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat($count, minmax(min-content, 1fr));
+  column-gap: 40px;
+  row-gap: 24px;
+
+  @if $count > 2 {
+    @include desktop {
+      grid-template-columns: repeat($count - 1, minmax(min-content, 1fr));
+    }
+  }
+  @include tablet {
+    grid-template-columns: repeat(2, minmax(min-content, 1fr));
+  }
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+@mixin inputStyles {
+  border: 1px solid colors.$grey-10;
+  padding: 0 14px;
+  min-height: 42px;
+  gap: 5px;
+}
+@mixin shrinkLabel {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  transform: translateY(-50%);
+  background-color: #fff;
+
+  padding: 0 6px;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 11px;
+  color: #666666;
+  &.withHintIcon {
+    padding-right: 25px;
+  }
+}
